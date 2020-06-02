@@ -16,14 +16,14 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author Glissted
+ * @author Glissted hämtar data från databasen hämtar alla recept
  */
 @Stateless
 public class RamenRecipes {
 
     public List<Recipe> getRecipes() {
         List<Recipe> recipes = new ArrayList<>();
-        try ( Connection connection = ConnectionFactory.getConnection()) {
+        try (Connection connection = ConnectionFactory.getConnection()) {
             Statement stmt = connection.createStatement();
             String sql = "SELECT * FROM recipe";
             ResultSet data = stmt.executeQuery(sql);
@@ -41,10 +41,11 @@ public class RamenRecipes {
         return recipes;
     }
 
-
-
+    /**
+     * lägger till nya recept
+     */
     public static int postRecipe(Recipe recipe) {
-        try ( com.mysql.jdbc.Connection connection = ConnectionFactory.getConnection()) {
+        try (com.mysql.jdbc.Connection connection = ConnectionFactory.getConnection()) {
             Statement stmt = connection.createStatement();
             String sql = String.format("INSERT INTO recipe VALUES(NULL,'%s','%s')",
                     recipe.getName(), recipe.getInstruction());
@@ -56,8 +57,11 @@ public class RamenRecipes {
         return 0;
     }
 
+    /**
+     * hämtar specifika recept recept
+     */
     public Recipe getRecipe(int id) {
-        try ( com.mysql.jdbc.Connection connection = ConnectionFactory.getConnection()) {
+        try (com.mysql.jdbc.Connection connection = ConnectionFactory.getConnection()) {
             Statement stmt = connection.createStatement();
             String sql = "SELECT * FROM recipe WHERE id=" + id;
             ResultSet data = stmt.executeQuery(sql);
@@ -72,4 +76,4 @@ public class RamenRecipes {
         }
         return null;
     }
- }
+}

@@ -11,19 +11,20 @@ package com.mycompany.ramenrecipes.entities;
  */
 public class Mesurements {
 
+    private String name;
 
-    private int name;
-
-    public Mesurements(String name) {
-        
+    public Mesurements() {
     }
 
+    public Mesurements(String name) {
+        this.name = name;
+    }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 }

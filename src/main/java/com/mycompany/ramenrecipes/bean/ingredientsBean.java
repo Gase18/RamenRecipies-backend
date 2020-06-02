@@ -17,6 +17,7 @@ import javax.ejb.Stateless;
 /**
  *
  * @author Glissted
+ * hämtar alla ingredienser från en databas
  */
 @Stateless
  public class ingredientsBean {

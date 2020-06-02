@@ -12,6 +12,7 @@ import com.mycompany.ramenrecipes.entities.Recipe;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -28,7 +29,7 @@ public class RecipeResource {
 
     @EJB
     RamenRecipes ramenRecipes;
-    
+
     @EJB
     ingredientsBean ingredientsBean;
 
@@ -49,8 +50,20 @@ public class RecipeResource {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
     }
+
+    @POST
+    @Path("recipe/{id}")
+    public Response postRecipe(@PathParam("id") int id) {
+        Recipe recipe = ramenRecipes.getRecipe(id);
+        if (recipe != null) {
+            return Response.ok(recipe).build();
+        } else {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+    }
     
-    
+ 
+
     @GET
     @Path("recipe_has_ingredients/{id}")
     public Response getIngredient(@PathParam("id") int id) {

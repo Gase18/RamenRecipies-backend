@@ -16,6 +16,9 @@ import java.util.List;
 /**
  *
  * @author Glissted
+ * 
+ * Hämtar data fårn databasen 
+ * hämtar alla mått
  */
 public class MesurementsBean {
 

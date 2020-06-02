@@ -14,8 +14,6 @@ public class Ingredients {
     private String name;
     private String amount; 
 
-    public Ingredients() {
-    }
 
     public Ingredients(String name, String amount) {
         this.name = name;

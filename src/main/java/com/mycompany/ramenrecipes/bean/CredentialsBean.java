@@ -10,7 +10,11 @@ import java.util.Base64;
 import javax.ejb.Stateless;
 
 
-
+/**
+ *
+ * @author Glissted
+ * Skapar användarnamn och lösenord
+ */
 @Stateless
 public class CredentialsBean {
     public Credentials createCredentials(String basicAuth){
